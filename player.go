@@ -1,7 +1,16 @@
+// Prepared by: Pooja Khanal, A25288740
+// Prepared for : Assignment 1, CS524, Spring 2020
+// Submitted on : 02/20/2020
+
+//Program Description:
+// Main tasks covered by this program are
+// 1. This program calculates the player statistics, batting avaerage, slugging and base percentage.
+// 2. Checks if inconsisent data are present in any player line.
+// 3. Calculates overall batting average for players without any error in their input data
+// 4. main.go is the starting point for the program
+
 package main
 
-// add preamble in the code
-// add your name, A#, seciton, details to follow in the progran
 import (
 	"fmt"
 	"strconv"

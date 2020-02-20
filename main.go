@@ -7,8 +7,6 @@
 // 1. This program calculates the player statistics, batting avaerage, slugging and base percentage.
 // 2. Checks if inconsisent data are present in any player line.
 // 3. Calculates overall batting average for players without any error in their input data
-// 4. Writes the report to console and asks the user whether they want to write in output file
-// 5. Writes the reuslt in the user specified outputfile
 
 package main
 
@@ -23,19 +21,26 @@ import (
 
 // Entry point of the program // main function
 func main() {
-	color.Cyan(`Welcome to the player statistics calculator test program. I am going to
-read players from an input data file.  You will tell me the name of
-your input file.  I will store all of the players in a list,
-compute each player's averages and then write the resulting team report 
-to your output file.`)
+	color.Magenta("Prepared by : Pooja Khanal/CS524 A25288740")
+	color.Cyan(`Welcome to the player statistics calculator test program. 
+I am going to read players from an input data file.  
+You will tell me the name of your input file.  
+I will store all of the players in a list,compute each player's averages
+and then write the resulting team report to your output file.`)
 
 	var fileName string
-	fmt.Println("Enter the name of your input file")
+	fmt.Println("Provide the name of your input file and press ENTER")
 	fmt.Scan(&fileName)
-	players, errors := getPlayers(fileName)
-	printPlayerReport(players)
-	printErrorReport(errors)
-	printReportToFile(players)
+	players, errors := getAllPlayers(fileName)
+	commandlineStream := bufio.NewWriter(os.Stdout)
+
+	printPlayerReport(players, commandlineStream)
+	printErrorReport(errors, commandlineStream)
+	commandlineStream.Flush()
+
+	handlePrintToFile(players, errors)
+
+	fmt.Println("End of Program, GoodBye!")
 }
 
 func check(e error) {
@@ -45,7 +50,7 @@ func check(e error) {
 }
 
 // Read from the file and get each player
-func getPlayers(fileName string) ([]Player, []error) {
+func getAllPlayers(fileName string) ([]Player, []error) {
 	var players []Player
 	var errors []error
 
