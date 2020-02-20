@@ -27,33 +27,13 @@ your input file.  I will store all of the players in a list,
 compute each player's averages and then write the resulting team report 
 to your output file.`)
 
-	var fileName, outFile, option string
+	var fileName string
 	fmt.Println("Enter the name of your input file")
 	fmt.Scan(&fileName)
 	players, errors := getPlayers(fileName)
 	printPlayerReport(players)
 	printErrorReport(errors)
-	fmt.Println("Fo you want to write your output to a file? Type Y/N")
-	fmt.Scan(&option)
-	if option == "Y" || option == "y" {
-		fmt.Println("Give a name for your output file")
-		fmt.Scan(&outFile)
-		// outputf, _ := os.Create(outFile)
-		// fmt.Println()
-		// writer := bufio.NewWriter(outputf)
-		// defer writer.Flush()
-
-		fmt.Println("Output written to", outFile)
-		fmt.Println("End of program, GoodBye!")
-	} else if option == "N" || option == "n" {
-		fmt.Println("End of Program, GoodBye!")
-	} else {
-		fmt.Println("End of Program, GoodBye!")
-	}
-
-	// printPlayerReport(players)
-	// printErrorReport(errors)
-
+	printReportToFile(players)
 }
 
 func check(e error) {
