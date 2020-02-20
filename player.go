@@ -37,6 +37,14 @@ func (p Player) getOnBasePercentage() float64 {
 	return float64(p.singles+p.doubles+p.triples+p.hitByPitch+p.walks) / float64(p.plateAppearances)
 }
 
+// ByLastName Comparator to sort players by last name
+type ByLastName []Player
+
+// ByLastName implements the sort.Interface for []Player based on lastName field
+func (a ByLastName) Len() int           { return len(a) }
+func (a ByLastName) Swap(i, j int)      { a[i], a[j] = a[j], a[i] }
+func (a ByLastName) Less(i, j int) bool { return a[i].lastName < a[j].lastName }
+
 //get the details of the player and create an instance of each Player Structure
 func getPlayer(s []string, lineCount int) (Player, error) {
 	err := checkErrors(s, lineCount)

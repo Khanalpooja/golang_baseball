@@ -14,6 +14,7 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"sort"
 	"strings"
 
 	"github.com/fatih/color"
@@ -33,7 +34,8 @@ and then write the resulting team report to your output file.`)
 	fmt.Scan(&fileName)
 	players, errors := getAllPlayers(fileName)
 	commandlineStream := bufio.NewWriter(os.Stdout)
-
+	// Sort the players by lastName
+	sort.Sort(ByLastName(players))
 	printPlayerReport(players, commandlineStream)
 	printErrorReport(errors, commandlineStream)
 	commandlineStream.Flush()
