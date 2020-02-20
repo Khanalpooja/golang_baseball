@@ -41,6 +41,8 @@ func printPlayerReport(players []Player) {
 	}
 
 }
+
+//write the player report to the file
 func printReportToFile(players []Player) {
 	var overalAvg, sum float64
 

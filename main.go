@@ -7,6 +7,8 @@
 // 1. This program calculates the player statistics, batting avaerage, slugging and base percentage.
 // 2. Checks if inconsisent data are present in any player line.
 // 3. Calculates overall batting average for players without any error in their input data
+// 4. Writes the report to console and asks the user whether they want to write in output file
+// 5. Writes the reuslt in the user specified outputfile
 
 package main
 
