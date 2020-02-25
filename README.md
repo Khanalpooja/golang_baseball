@@ -3,11 +3,7 @@
 Programming Languages (CS524) 
 Programming Assignment I
 Feb 20, 2020 
-
-
 Prepared By : Pooja Khanal , A25288740
-
-
 Includes : 
 Software Description Document
 Software Test Plan Document 
